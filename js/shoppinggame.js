@@ -77,6 +77,7 @@ class Rating {
 
 // Complete the loadProducts function
 const loadProducts = (map, prodId) => {
+    //difference between this and let a = []?
     let a = new Array();
     try {
         // Call Object.keys() to load the property names of the Product object in to prodKeys array here
@@ -90,7 +91,7 @@ const loadProducts = (map, prodId) => {
                 const value = item[1];
 
                 // Create and assign an instance of Product to prodObj here
-                let prodObj;
+                let prodObj = new Product();
 
                 if (prodObj != undefined && prodObj != null) {
                     for (let i = 0; i < prodKeys.length; i++) {
@@ -100,6 +101,7 @@ const loadProducts = (map, prodId) => {
                         } else if (property == "name") {
                             prodObj[property] = key;
                         } else if (property == "price") {
+                            //why not set the object itself to reflect this?
                             prodObj[property] = value.pr;
                         } else if (property == "expiryDate") {
                             prodObj[property] = value.dt;
@@ -113,6 +115,7 @@ const loadProducts = (map, prodId) => {
         }
 
         return a;
+        //what is this catch (e)
     } catch (e) {
         return a;
     }
